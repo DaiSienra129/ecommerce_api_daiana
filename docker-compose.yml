@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13 # imagen de postgres
+    container_name: ecommerce-db # nombre del contenedor
+    environment: # variables de entorno
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+    ports: # mapea los puertos del contenedor al host
+      - "5433:5432" 
+    volumes: # mapea el volumen postgres_data al directorio /var/lib/postgresql/data del contenedor
+      - postgres_data:/var/lib/postgresql/data 
+
+  app:
+    build: . # construye la imagen a partir del Dockerfile en el directorio actual
+    container_name: ecommerce-app # nombre del contenedor
+    environment: # variables de entorno
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/ecommerce
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports: # mapea los puertos del contenedor al host
+      - "8080:8080"
+    depends_on: # depende del servicio db
+      - db
+
+volumes: # en los volúmenes persisten los datos de los contenedores
+  postgres_data: # nombre del volumen
