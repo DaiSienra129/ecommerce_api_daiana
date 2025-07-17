@@ -1,56 +1,69 @@
-# 🛍 eCommerce Spring Boot API  
+# 🛍️ eCommerce Spring Boot API
 
-## 📌 Description  
+## 📚 Descripción
 
-The **eCommerce Spring Boot API** is a backend service for a comprehensive **web eCommerce system**. It currently supports a **Swing desktop application** for system management and is connected to a **PostgreSQL database**. The API provides endpoints for **product management, user authentication (via JWT), cart and order management**, and more.  
+Este proyecto es una API RESTful desarrollada en **Java con Spring Boot** como parte del trabajo práctico final de la materia **Programación Avanzada 2**. Implementa la lógica backend de un sistema de comercio electrónico, permitiendo:
 
-🚀 **Future releases** will include a **frontend web client** to interact with the backend API.  
+- Gestión de usuarios y autenticación mediante **JWT**.
+- Administración de productos, categorías y carritos de compra.
+- Registro y consulta de pedidos.
+- Validaciones con **Jakarta Validation**.
+- Persistencia de datos en una base de datos **PostgreSQL**.
 
----
-
-## 🛠 Technologies  
-
-🔹 **Java** (Spring Boot)  
-🔹 **PostgreSQL** (Relational Database)  
-🔹 **JWT** (JSON Web Tokens for authentication)  
-🔹 **Hibernate ORM** (Object-Relational Mapping)  
-🔹 **Jakarta Validation** (Input validation)  
-🔹 **Swing** (for the desktop application)  
-🔹 **Maven** (Dependency management)  
-🔹 **Docker & Docker Compose** (For containerization)  
+Está diseñado bajo el patrón arquitectónico **MVC**, y su despliegue está automatizado con **Docker y Docker Compose**. La documentación está disponible mediante **Swagger UI**.
 
 ---
 
-## 🏢 Architecture  
+## 👩‍💻 Autora
 
-The project follows the **Model-View-Controller (MVC)** architecture, ensuring a clean separation of concerns.  
-
-✔️ **MVC Conventions**: Separates **data, UI, and logic** for better maintainability.  
-✔️ **Jakarta Validation**: Ensures incoming data meets business rules.  
-✔️ **Hibernate ORM**: Simplifies database interactions.  
-✔️ **Integration with Swing**: The backend API currently works with a **Swing desktop app**, which will be **refactored into a separate application**.  
-✔️ **Future Plans**: A **frontend web client** will be developed to interact with the API via HTTP endpoints.  
+**Daiana Sienra**  
+Estudiante de Ingeniería en Informática  
+Universidad Nacional — Programación Avanzada 2  
+GitHub: [@DaiSienra129](https://github.com/DaiSienra129)
 
 ---
 
-## 🐋 Running with Docker  
+## 🛠️ Tecnologías Utilizadas
 
-To simplify deployment, we provide a **setup script (`setup.sh`)** that automates the installation of **Maven, Docker, and Docker Compose**, then builds and runs the application in containers.  
+- Java 17 (Spring Boot)  
+- PostgreSQL  
+- Hibernate ORM  
+- JWT (JSON Web Tokens)  
+- Jakarta Validation  
+- Maven  
+- Docker & Docker Compose  
+- Swagger (documentación de la API)
 
-### 🚀 Quick Start  
+---
 
-1️⃣ Clone the repository:  
-```sh
-git clone https://github.com/giulianoh92/ecommerce_spring_app.git
-cd ecommerce-spring-app
+## ⚙️ Arquitectura del Sistema
+
+El sistema sigue el patrón **Modelo-Vista-Controlador (MVC)**:
+
+- **Modelo**: Entidades de dominio persistidas con Hibernate.
+- **Controlador**: Endpoints REST para usuarios, productos, pedidos, etc.
+- **Servicio**: Lógica de negocio separada en clases de servicio.
+- **Validación**: A través de anotaciones con Jakarta Validation.
+
+---
+
+## 🚀 Cómo Ejecutar el Proyecto
+
+### Opción 1: Uso del script con Docker
+
+1. Clonar el repositorio:  
+```bash
+git clone https://github.com/DaiSienra129/ecommerce_api_daiana.git
+cd ecommerce_api_daiana
+
 ```  
 
-2️⃣ Make the `setup.sh` script executable:  
+2- Hacer ejecutable el script::  
 ```sh
 chmod +x setup.sh
 ```  
 
-3️⃣ Run the script:  
+3- Ejecutar:  
 ```sh
 ./setup.sh
 ```  
@@ -64,78 +77,49 @@ Once completed, the API will be running inside Docker containers. 🎉
 
 ---
 
-## 🛠 Manual Installation  
+## 🛠 Instalación Manual 
 
-### 📌 Prerequisites  
+### 📌 Requisitos:  
 
 - **Java 17** ☕  
 - **Maven** 🛠  
 - **PostgreSQL** 🐘
 
-### 🔧 Setup  
+### 🔧 Pasos  
 
-1️⃣ **Clone the repository**  
-```sh
-git clone https://github.com/giulianoh92/ecommerce_spring_app.git
-cd ecommerce-spring-app
-```  
-
-2️⃣ **Set up the PostgreSQL database**  
+1️⃣ **Crear la base de datos:**  
 ```sh
 psql -U postgres
 CREATE DATABASE ecommerce;
 \q
+
 ```  
 
-3️⃣ **Configure database connection**  
-Edit the `src/main/resources/application.properties` file:  
-```properties
+2️⃣ **Configurar application.properties:**  
+```sh
 spring.datasource.url=jdbc:postgresql://localhost:5432/ecommerce
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+spring.datasource.username=tu_usuario
+spring.datasource.password=tu_contraseña
+
 ```  
 
-4️⃣ **Build the project**  
+3️⃣ **Compilar y ejecutar:**  
 ```sh
 mvn clean install
-```  
-
-5️⃣ **Run the application**  
-```sh
 mvn spring-boot:run
+
 ```  
 
 ---
 
-## 🚀 Usage  
+## 🚀 Documentación de la API  
 
-🔹 Once the application is running, access the **Swagger UI** for API documentation:  
-📌 `http://localhost:8080/swagger-ui.html`  
+Una vez ejecutado, podés acceder a la documentación interactiva en:
 
----
+📍 `http://localhost:8080/swagger-ui.html`
 
-## 🗓 Future Releases  
-
-✔️ **Separate Swing Desktop App** 🎨  
-✔️ **Develop a Web Frontend Client** 🌐  
+Desde allí podés probar todos los endpoints de forma visual.
 
 ---
-
-## 🤝 Contributing  
-
-We welcome contributions! Follow these steps:  
-
-1️⃣ **Fork** the repository.  
-2️⃣ **Create a new branch** (`git checkout -b feature-branch`).  
-3️⃣ **Make your changes** 🛠  
-4️⃣ **Commit your changes** (`git commit -m "Add new feature"`).  
-5️⃣ **Push to the branch** (`git push origin feature-branch`).  
-6️⃣ **Create a Pull Request**.  
-
----
-
-## 📝 License  
-
-This project is licensed under the **MIT License**. 📝  
 
 ---
